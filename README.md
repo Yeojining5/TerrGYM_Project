@@ -36,13 +36,13 @@
 
 ## 3. Wire Frame
 <br>
-<img width="70%" src="https://user-images.githubusercontent.com/99080986/187970608-f4cb90c4-34a6-4117-851e-c88fc6a46f7a.png"/>
+<img width="60%" src="https://user-images.githubusercontent.com/99080986/187970608-f4cb90c4-34a6-4117-851e-c88fc6a46f7a.png"/>
 <br>
-<img width="70%" src="https://user-images.githubusercontent.com/99080986/187971153-277f6e5c-3cd5-45b2-9b58-3c1e82925fb8.png"/>
+<img width="60%" src="https://user-images.githubusercontent.com/99080986/187971153-277f6e5c-3cd5-45b2-9b58-3c1e82925fb8.png"/>
 <br>
-<img width="70%" src="https://user-images.githubusercontent.com/99080986/187969638-8b47ff38-e248-4c4a-b35c-3e223107516a.png"/>
+<img width="60%" src="https://user-images.githubusercontent.com/99080986/187969638-8b47ff38-e248-4c4a-b35c-3e223107516a.png"/>
 <br>
-<img width="70%" src="https://user-images.githubusercontent.com/99080986/187969651-3b61b44e-6101-4182-b48a-38688de51b8c.png"/>
+<img width="60%" src="https://user-images.githubusercontent.com/99080986/187969651-3b61b44e-6101-4182-b48a-38688de51b8c.png"/>
 
 <br>
 
