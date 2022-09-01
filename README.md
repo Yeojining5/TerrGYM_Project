@@ -35,11 +35,16 @@
 <br>
 
 ## 3. Wire Frame
-
-<img width="80%" src="https://user-images.githubusercontent.com/99080986/187969604-0ebb0c7e-33de-4011-965d-706997fc1be3.png"/>
+<br>
+<img width="80%" src="https://user-images.githubusercontent.com/99080986/187970608-f4cb90c4-34a6-4117-851e-c88fc6a46f7a.png"/>
+<br>
 <img width="80%" src="https://user-images.githubusercontent.com/99080986/187969617-f9ee8bcb-585b-438e-9405-025b9e21c68a.png"/>
+<br>
 <img width="80%" src="https://user-images.githubusercontent.com/99080986/187969638-8b47ff38-e248-4c4a-b35c-3e223107516a.png"/>
+<br>
 <img width="80%" src="https://user-images.githubusercontent.com/99080986/187969651-3b61b44e-6101-4182-b48a-38688de51b8c.png"/>
+
+<br>
 
 ## 4. 팀원 이름 및 역할
 ◼ 백종국(조장) <br>
