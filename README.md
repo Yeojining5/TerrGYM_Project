@@ -20,7 +20,7 @@
 <br>
 
 ## 2. UseCase Diagram
-<img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1669560044/Intell_Usecase_%EC%B5%9C%EC%A2%85_tlxxpv.jpg">
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1669560044/Intell_Usecase_%EC%B5%9C%EC%A2%85_tlxxpv.jpg">
 
 <br>
 
