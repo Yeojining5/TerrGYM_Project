@@ -9,7 +9,7 @@
 
 <br>
 
-## 1. 프로젝트 소개 - IntelliGYM(인텔리짐)
+## 1️⃣ 프로젝트 소개 - IntelliGYM(인텔리짐)
 
 - 체육관 관리에 필요한 회원 전용 웹페이지 구현
 - 회원제로 운영되는 체육관 관리 시스템 구현
@@ -19,12 +19,12 @@
 
 <br>
 
-## 2. UseCase Diagram
+## 2️⃣ UseCase Diagram
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1669560044/Intell_Usecase_%EC%B5%9C%EC%A2%85_tlxxpv.jpg">
 
 <br>
 
-## 3. Wire Frame
+## 3️⃣ UI 화면
 <br>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187970608-f4cb90c4-34a6-4117-851e-c88fc6a46f7a.png"/>
 <br>
@@ -36,7 +36,7 @@
 
 <br>
 
-## 4. 주요 기능 설명
+## 4️⃣ 주요 기능 설명
 
 | 구현 기능                               | 상세 기능 |
 | ---------------------------------------| --------- |
@@ -51,8 +51,32 @@
 
 <br>
 
+## 5️⃣ 내가 구현한 기능과 UI
 
-## 5. 팀원 이름 및 역할
+### 1) 회사소개(About) 페이지
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501840/semi_about_yyafqn.gif"/>
+#### 스크롤스파이 기능
+
+
+<br>
+### 2) 수강신청 페이지
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage1_jzdokt.jpg"/>
+
+<br>
+### 3) 수강신청 상세보기
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage2_enc3pw.jpg"/>
+
+<br>
+### 4) 수강내역 조회 페이지
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
+
+<br>
+### 5) 수강내역 삭제
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage4_wd0hnl.jpg"/>
+
+<br>
+
+## 6️⃣ 팀원 이름 및 역할
 ◼ 백종국(조장)
 - 서버 사이드 담당
 - 로그인, 회원가입 UI 및 기능 구현
@@ -81,7 +105,7 @@
 
 <br>
 
-## 6. 사용 기술 및 개발 환경
+## 7️⃣ 사용 기술 및 개발 환경
 - 프론트엔드 : HTML5 / CSS3 / JavaScript / jQuery
 - 데이터베이스 & 서버 : Firebase v9 / Node.js-Express
 - 개발환경 : Visual Studio Code
