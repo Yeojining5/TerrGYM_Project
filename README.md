@@ -55,22 +55,27 @@
 
 ### 1) 회사소개(About) 페이지
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501840/semi_about_yyafqn.gif"/>
+
 #### 스크롤스파이 기능
 
 
 <br>
+
 ### 2) 수강신청 페이지
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage1_jzdokt.jpg"/>
 
 <br>
+
 ### 3) 수강신청 상세보기
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage2_enc3pw.jpg"/>
 
 <br>
+
 ### 4) 수강내역 조회 페이지
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
 
 <br>
+
 ### 5) 수강내역 삭제
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage4_wd0hnl.jpg"/>
 
