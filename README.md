@@ -56,7 +56,8 @@
 ### 1) 회사소개(About) 페이지
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501840/semi_about_yyafqn.gif"/>
 
-#### 스크롤스파이 기능
+#### (1) JavaScript Select Box 이벤트
+
 
 
 <br>
