@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원탈퇴</title>
+    <!-- ################## BOOTSTRAP ################## -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- ################## CSS ################## -->
+    <!--   <link href="./question.css" rel="stylesheet" > -->
+    <!-- ################## Jquery ################## -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- ################## JS ################## -->
+    <script src="./unregister.js" type="module" defer></script>
+
+    <style>
+    #myinfo {
+     /*  border : solid 1px navy; */
+      width: 80%;
+    }
+
+    </style>
+
+</head>
+
+<body>
+<!--==========================firebase 시작=====================================-->
+
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyDegzcOZjxNyw-GY8ATv97gEjHaKFs6HEQ",
+          authDomain: "semi-project-7a423.firebaseapp.com",
+          databaseURL: "https://semi-project-7a423-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "semi-project-7a423",
+          storageBucket: "semi-project-7a423.appspot.com",
+          messagingSenderId: "660861448017",
+          appId: "1:660861448017:web:640334735d21f4977bed70"
+        };
+        firebase.initializeApp(firebaseConfig);
+      </script>
+<!--==========================firebase 끝=====================================-->
+
+
+    <!-- ################## navbar Start ##################-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <div class="icon p-2 me-2">
+          <img class="img-fluid" src="./intell-logo2.png" alt="Icon" style="width: 30px; height: 30px;">
+        </div>
+        <a class="navbar-brand" href="#">IntelliGym</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit" id="navbtn">Search</button>
+            <button class="btn btn-outline-light" type="submit" id="navbtn">Sign&nbsp;Out</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- ################## navbar End ##################-->
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- ######################## side bar ######################################### -->
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          
+          <div class="position-sticky p-3 flex-shrink-0 bg-white">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+              <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+              <span class="fs-1 fw-semibold">My page</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+              <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                  나의 운동일지
+                </button>
+                <div class="collapse show" id="home-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Updates</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Reports</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="border-top my-3"></li>
+              <li class="mb-1">
+                <button id="myquestion" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                  나의 문의
+                </button>
+                <div class="collapse" id="dashboard-collapse">
+                
+                </div>
+              </li>
+              <li class="border-top my-3"></li>
+              <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                  나의 수강
+                </button>
+                <div class="collapse" id="orders-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Processed</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Returned</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="border-top my-3"></li>
+              <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                  나의 정보
+                </button>
+                <div class="collapse" id="account-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="border-top my-3"></li>
+            </ul>
+          </div>
+        
+
+
+        </nav> <!-- ########################## end of side bar ######################################### -->
+
+
+        
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="main">
+          <div class="container">
+
+            <h1 class="display-7 fw-bold"> 회 원  탈 퇴 </h1>
+            <div class="divhr" style='background:#03a9f4; height:5px; width:250px;'></div>
+            
+
+<!-- =========================== 마이페이지 - 내 정보 시작======================================== -->
+            <section>
+
+  
+                <main>
+                    <h1 class="visually-hidden">Heroes examples</h1>
+                  
+                    <div class="px-4 py-5 my-5 text-center">
+                      <h1 class="display-5 fw-bold">회원탈퇴 페이지 입니다.</h1>
+                      <div class="col-lg-6 mx-auto">
+                        <p class="lead mb-4">
+                         <!--    <li> 탈퇴에 대한 자세한 문의는 고객센터에 전화주세요.</li>
+                            <li> 보유 하신 회원권이나 연회비는 탈퇴시 환불불가입니다.</li> -->
+                            <hr class="my-4">
+                            
+                            <p> 탈퇴에 대한 자세한 문의는 고객센터에 전화주세요. </p>
+                            <p> 보유 하신 회원권이나 연회비는 탈퇴시 환불불가입니다.</p>
+                            <p></p>
+
+                            <br><b>그동안 저희 intelliGYM을 사랑해주시고 <br>이용해주셔서 진심으로 감사드립니다.
+                            
+                            <br><br> 불만족스러운 부분이 있으셨다면 깊이 사과 드리며 <br>보다 나은 서비스로 <br> 고객님과 다시 만날 수 있기를 희망합니다.</b>
+                       
+                        </p>
+                            
+                            <hr class="my-4">
+                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                          <button id="unregister" type="button" class="btn btn-primary btn-lg px-4 gap-3">탈퇴하기</button>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="b-example-divider"></div>
+                  
+          
+          
+                  
+                  
+                    <div class="b-example-divider mb-0"></div>
+
+
+
+                  </main>
+
+
+
+
+
+
+<!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+
+
+
+
+<!-- ===========================  마이페이지 - 내 정보 끝======================================= -->
+            </section>
+
+          </div> <!-- end of div.container -->
+        </main>
+      </div> <!-- end of div.row -->
+    </div> <!-- end of div.container -->
+
+  </body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+[debug] [2022-12-07T17:10:15.642Z] ----------------------------------------------------------------------
+[debug] [2022-12-07T17:10:15.644Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-12-07T17:10:15.646Z] CLI Version:   11.4.2
+[debug] [2022-12-07T17:10:15.646Z] Platform:      win32
+[debug] [2022-12-07T17:10:15.646Z] Node Version:  v18.12.1
+[debug] [2022-12-07T17:10:15.649Z] Time:          Thu Dec 08 2022 02:10:15 GMT+0900 (대한민국 표준시)
+[debug] [2022-12-07T17:10:15.649Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-07T17:10:15.725Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-07T17:10:15.725Z] > authorizing via signed-in user (yeojining5@gmail.com)
+[debug] [2022-12-07T17:10:15.725Z] [iam] checking project semi-intelligym for permissions ["firebase.projects.get"]
+[debug] [2022-12-07T17:10:15.729Z] > refreshing access token with scopes: []
+[debug] [2022-12-07T17:10:15.732Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-12-07T17:10:15.733Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-07T17:10:16.015Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-12-07T17:10:16.016Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-07T17:10:16.037Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/semi-intelligym:testIamPermissions [none]
+[debug] [2022-12-07T17:10:16.038Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/semi-intelligym:testIamPermissions x-goog-quota-user=projects/semi-intelligym
+[debug] [2022-12-07T17:10:16.038Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/semi-intelligym:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-12-07T17:10:17.029Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/semi-intelligym:testIamPermissions 200
+[debug] [2022-12-07T17:10:17.029Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/semi-intelligym:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-12-07T17:10:17.031Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/semi-intelligym [none]
+[debug] [2022-12-07T17:10:17.666Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/semi-intelligym 200
+[debug] [2022-12-07T17:10:17.666Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/semi-intelligym {"projectId":"semi-intelligym","projectNumber":"925436106266","displayName":"Semi-IntelliGym","name":"projects/semi-intelligym","resources":{"hostingSite":"semi-intelligym","realtimeDatabaseInstance":"semi-intelligym-default-rtdb","storageBucket":"semi-intelligym.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE","etag":"1_70f65bad-b7d7-4e12-ba0c-f9589d39d296"}
+[info] 
+[info] === Serving from 'C:\Users\user\TerrGYM_Project'...
+[info] 
+[debug] [2022-12-07T17:10:17.672Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/semi-intelligym/sites 
+[debug] [2022-12-07T17:10:18.465Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/semi-intelligym/sites 200
+[debug] [2022-12-07T17:10:18.465Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/semi-intelligym/sites {"sites":[{"name":"projects/semi-intelligym/sites/semi-intelligym","defaultUrl":"https://semi-intelligym.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-07T17:10:18.466Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/semi-intelligym/webApps/-/config [none]
+[debug] [2022-12-07T17:10:19.652Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/semi-intelligym/webApps/-/config 200
+[debug] [2022-12-07T17:10:19.653Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/semi-intelligym/webApps/-/config {"projectId":"semi-intelligym","appId":"1:925436106266:web:5e064d6b621ccb9dfd63a3","databaseURL":"https://semi-intelligym-default-rtdb.asia-southeast1.firebasedatabase.app","storageBucket":"semi-intelligym.appspot.com","locationId":"asia-northeast3","apiKey":"AIzaSyCrA0QQH5QpbtWdyVbrQB72APSQxH3cjl4","authDomain":"semi-intelligym.firebaseapp.com","messagingSenderId":"925436106266"}
+[warn] !  hosting: Port 5000 is not available. Trying another port... {"metadata":{"emulator":{"name":"hosting"},"message":"\u001b[33mhosting: \u001b[39mPort 5000 is not available. Trying another port..."}}
+[info] i  hosting: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting: Local server: http://localhost:5005 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5005\u001b[22m\u001b[24m"}}
+[info] i  hosting: 127.0.0.1 - - [07/Dec/2022:17:10:24 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [07/Dec/2022:17:10:24 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [07/Dec/2022:17:10:40 +0000] "GET /public/registration/register.html HTTP/1.1" 404 172 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [07/Dec/2022:17:10:40 +0000] \"GET /public/registration/register.html HTTP/1.1\" 404 172 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36\""}}

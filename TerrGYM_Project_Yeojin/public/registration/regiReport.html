@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>IntelliGym 수강신청현황</title>
+
+    <!-- ################## CSS ################## -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="./index.css">
+
+    <!-- ################## Jquery ################## -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- ###### jQuery기반의 쿠키 라이브러리 사용하기 ####### -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <!-- ################## fontawesome ################## -->
+    <script src="https://kit.fontawesome.com/fd76fe00bf.js" crossorigin="anonymous"></script>
+
+    <style>
+
+      .card:hover {
+        cursor: pointer;
+        background-color: #b3e5fc;
+      }
+
+      .head:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      
+    </style>
+
+  </head>
+  <body>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCrA0QQH5QpbtWdyVbrQB72APSQxH3cjl4",
+      authDomain: "semi-intelligym.firebaseapp.com",
+      databaseURL: "https://semi-intelligym-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "semi-intelligym",
+      storageBucket: "semi-intelligym.appspot.com",
+      messagingSenderId: "925436106266",
+      appId: "1:925436106266:web:5e064d6b621ccb9dfd63a3"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+
+  <!-- ################## navbar Start ##################-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <div class="icon p-2 me-2">
+        <img class="img-fluid" src="./intell-logo2.png" alt="Icon" style="width: 30px; height: 30px;">
+      </div>
+      <a class="navbar-brand" href="#">IntelliGym</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <span class="p-0 m-3 fs-6 fw-semibold text-white" id="userName"></span>
+        <a class="btn btn-outline-light mx-2" href="./login.html" role="button">Sign&nbsp;Out</a>
+      </div>
+    </div>
+  </nav>
+  <!-- ################## navbar End ##################-->
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- ######################## side bar ######################################### -->
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        
+        <div class="position-sticky p-3 flex-shrink-0 bg-white">
+          <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-1 fw-semibold mt-5">Admin page</span>
+          </a>
+          <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                나의 운동일지
+              </button>
+              <div class="collapse" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Updates</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Reports</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                나의 문의
+              </button>
+              <div class="collapse" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Annually</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
+                수강 관리
+              </button>
+              <div class="collapse show" id="orders-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="./regiUpload.html" class="link-dark d-inline-flex text-decoration-none rounded">신규강의등록</a></li>
+                  <li><a href="./regiReport.html" class="link-dark d-inline-flex text-decoration-none rounded">수강신청현황</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                나의 정보
+              </button>
+              <div class="collapse" id="account-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
+                  <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="border-top my-3"></li>
+          </ul>
+        </div>
+        
+      </nav> <!-- ########################## end of side bar ######################################### -->
+
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="main">
+        <div class="ms-5 mt-2 pb-3">
+          <h2 class="fw-bold">&nbsp;수강 신청 현황</h2>
+          <div class="divhr" style='background:#03a9f4; height:5px; width:250px;'></div>
+        </div>
+        
+        <div class="row">
+          <section class="col-lg-2 d-none d-lg-block mt-5">
+
+            <div class="card mt-2 text-center border-dark" style="max-width: 18rem;">
+              <div class="card-header">강의분류 1</div>
+              <div class="card-body">
+                <h4 class="card-title fw-bold">필라테스</h4>
+              </div>
+            </div>
+            <div class="card mt-2 text-center border-dark" style="max-width: 18rem;">
+              <div class="card-header">강의분류 2</div>
+              <div class="card-body">
+                <h4 class="card-title fw-bold">요가</h4>
+              </div>
+            </div>
+            <div class="card mt-2 text-center border-dark" style="max-width: 18rem;">
+              <div class="card-header">강의분류 3</div>
+              <div class="card-body">
+                <h4 class="card-title fw-bold">줌바</h4>
+              </div>
+            </div>
+            <div class="card mt-2 text-center border-dark" style="max-width: 18rem;">
+              <div class="card-header">강의분류 4</div>
+              <div class="card-body">
+                <h4 class="card-title fw-bold border-dark">스피닝</h4>
+              </div>
+            </div> 
+
+          </section>
+
+          <section class="col-sm-12 col-lg-10">
+            <form class="row g-3 justify-content-end pe-5">
+              <div class="col-auto">
+                <label for="inputPassword2" class="visually-hidden">강의번호 검색</label>
+                <input class="form-control" id="inputNum" placeholder="강의번호 검색">
+              </div>
+              <div class="col-auto">
+                <button id="search" type="submit" class="btn btn-primary mb-3">search</button>
+              </div>
+              <div class="col-auto dropdown ms-5">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Export File
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Excel</a></li>
+                  <li><a class="dropdown-item" href="#">Word</a></li>
+                  <li><a class="dropdown-item" href="#">PDF</a></li>
+                </ul>
+              </div>
+            </form>
+
+            <div class="table-responsive m-4 mt-1" style="height: 550px;">
+              <table class="table table-light table-bordered border-dark table-hover" id="table">
+                <thead>
+                  <tr class="table-primary border-dark">
+                    <th class="head" scope="col">구분</th>
+                    <th class="head" scope="col">강의번호</th>
+                    <th class="head" scope="col" colspan="3" >강의명</th>
+                    <th class="head" scope="col">강의시간</th>
+                    <th class="head" scope="col">회원이름</th>
+                    <th class="head" scope="col">회원성별</th>
+                    <th class="head" scope="col">회원나이</th>
+                  </tr>
+                </thead>
+                <tbody class="class-content">
+                  
+                </tbody>
+              </table>
+            </div><!-- end of div.table-responsive -->
+          </section>
+        </div> <!-- end of div.row -->
+      </main>
+
+    </div> <!-- end of div.row -->
+  </div> <!-- end of div.container -->
+
+
+
+
+  <script>
+
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+    
+    let classType;
+    let num = 0;
+
+    $('.card').click(function(e){
+      classType = $(this).find('.card-title').text()
+      console.log(classType);
+
+      e.stopImmediatePropagation(); // 이벤트 버블링 현상 방지
+
+      db.collection('myclass').where('강의분류', '==', classType).onSnapshot((result)=>{
+        $('.class-content').html('') // 테이블 빈화면으로 초기화
+        num = 0; // 구분번호 초기화
+        result.forEach((a)=>{
+          console.log(a.data());
+          const template = `
+                  <tr>
+                    <td>${++num}</td>
+                    <td>${a.data().강의번호}</td>
+                    <td colspan="3">${a.data().강의명}</td>
+                    <td>${a.data().강의시간}</td>
+                    <td>${a.data().이름}</td>
+                    <td>${a.data().성별}</td>
+                    <td>${a.data().나이}</td>
+                  </tr>
+                  `;
+          $('.class-content').append(template);
+        })
+      })
+    })
+
+
+
+    /// 유저의 로그인상태 확인 (로그인, 로그아웃, 새로고침 시 실행됨)
+    firebase.auth().onAuthStateChanged((user)=>{
+        if(user) {
+          // if 로그인 상태라면 출력됨, 아니면 null
+          console.log("user.uid : "+user.uid);
+          console.log("user.displayName : "+user.displayName);
+          // $('#userName').html(user.displayName) // span태그에 innerHTML 이 방법은 로딩이 오래걸림
+          //localStorage.setItem('정보이름', '값') // 불러오는 속도를 위해 localStorage에 담기
+          // '값'은 문자자료형만 가능. user는 object이므로 stringify를 통해 문자로 변환
+          if (user.displayName) {
+            $.cookie('c_name', user.displayName)
+            console.log($.cookie('c_name'));
+
+            let c_name = $.cookie('c_name')
+
+            if(c_name != null) {
+              $('#userName').html(`${c_name}님 환영합니다!`)
+            }
+          }
+        }
+      })
+
+  </script>  
+  
+
+
+    <!-- ################## JavaScript ################## -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
