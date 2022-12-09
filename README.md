@@ -9,7 +9,7 @@
 
 <br>
 
-## 1️⃣ 프로젝트 소개 - IntelliGYM(인텔리짐)
+## 1️. 프로젝트 소개 - IntelliGYM(인텔리짐)
 
 - 체육관 관리에 필요한 회원 전용 웹페이지 구현
 - 회원제로 운영되는 체육관 관리 시스템 구현
@@ -19,24 +19,27 @@
 
 <br>
 
-## 2️⃣ UseCase Diagram
+## 2️. UseCase Diagram
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1669560044/Intell_Usecase_%EC%B5%9C%EC%A2%85_tlxxpv.jpg">
 
 <br>
 
-## 3️⃣ UI 화면
+## 3. Firebase DB 설계
+<img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB1_egdcti.jpg"/>
+<img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB2_x73egk.jpg"/>
+
+## 4. UI 화면
 <br>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187970608-f4cb90c4-34a6-4117-851e-c88fc6a46f7a.png"/>
 <br>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187971153-277f6e5c-3cd5-45b2-9b58-3c1e82925fb8.png"/>
 <br>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187969638-8b47ff38-e248-4c4a-b35c-3e223107516a.png"/>
-<br>
-<img width="60%" src="https://user-images.githubusercontent.com/99080986/187969651-3b61b44e-6101-4182-b48a-38688de51b8c.png"/>
+
 
 <br>
 
-## 4️⃣ 주요 기능 설명
+## 5. 주요 기능 설명
 
 | 구현 기능                               | 상세 기능 |
 | ---------------------------------------| --------- |
@@ -51,38 +54,61 @@
 
 <br>
 
-## 5️⃣ 내가 구현한 기능과 UI
+## 6. 내가 구현한 기능과 UI
 
 ### 1) 회사소개(About) 페이지
-<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501840/semi_about_yyafqn.gif"/>
+<img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501840/semi_about_yyafqn.gif"/>
 
-#### (1) JavaScript Select Box 이벤트
+회사소개 페이지는 `HTML`과 `CSS`, `JavaScript`의 기본적인 문법을 활용하여 정적 페이지를 구성하였습니다.
+기본적인 UI 구성은 `Bootstrap`을 활용하였으며, **센터소개**는 **콤보박스 이벤트**를 활용하였습니다.
+**오시는 길**은 `KakaoMap API`를 활용하여 지도에 위치를 표시하였으며, 사이드바의 제목을 누르면 해당 좌표로 이동하는 **스크롤스파이**기능을 활용하였습니다.
 
 
+#### (1) JavaScript 콤보박스 이벤트
+Javascript 기본문법을 활용하여, 콤보박스에서 선택한 옵션에 해당하는 내용을 회색 박스인 `<ul class="items">`에 출력하는 기능입니다.
+```javascript
+const cmbbox = document.querySelector('#select_value'); // <select>
+
+const items = document.querySelector('.items'); // <ul>
+
+function addItem() {
+    if(cmbbox.selectedIndex==0) {
+        alert('찾으실 센터를 선택해주세요.')
+    } else {
+        const text = "IntelliGym "+ cmbbox.options[cmbbox.selectedIndex].text;
+
+        const item = createItem(text);
+        items.appendChild(item);
+    }
+}
+
+// 셀렉트 박스에서 아이템 선택했을 때 이벤트
+cmbbox.addEventListener('change', () => {
+    document.querySelector('.items').innerHTML = "";
+    addItem(); // 함수 호출
+    });
+```
 
 <br>
 
 ### 2) 수강신청 페이지
-<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage1_jzdokt.jpg"/>
+<img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage1_jzdokt.jpg"/>
 
 <br>
 
 ### 3) 수강신청 상세보기
-<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage2_enc3pw.jpg"/>
+<img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage2_enc3pw.jpg"/>
 
 <br>
 
 ### 4) 수강내역 조회 페이지
-<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
+<img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
+<img width="50%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670560818/semi_mypage4_qaj6rw.jpg"/>
+
 
 <br>
 
-### 5) 수강내역 삭제
-<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage4_wd0hnl.jpg"/>
-
-<br>
-
-## 6️⃣ 팀원 이름 및 역할
+## 7. 팀원 이름 및 역할
 ◼ 백종국(조장)
 - 서버 사이드 담당
 - 로그인, 회원가입 UI 및 기능 구현
@@ -111,9 +137,9 @@
 
 <br>
 
-## 7️⃣ 사용 기술 및 개발 환경
-- 프론트엔드 : HTML5 / CSS3 / JavaScript / jQuery
-- 데이터베이스 & 서버 : Firebase v9 / Node.js-Express
+## 8. 사용 기술 및 개발 환경
+- 프론트엔드 : HTML5 / CSS3 / JavaScript / jQuery / BootStrap
+- 데이터베이스 & 서버 : Firebase / Node.js-Express
 - 개발환경 : Visual Studio Code
-- 협업툴 : GitHub, Notion, Slack, Discord
-- 오픈 소스 : BootStrap, Kakao Map API, Chart.js
+- 협업툴 : GitHub / Notion / Slack
+- 오픈 소스 : Kakao Map API / Chart.js
