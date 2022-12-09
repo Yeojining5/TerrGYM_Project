@@ -69,8 +69,6 @@
 #### ☑ 주요기능 - JavaScript 콤보박스 이벤트
 Javascript 기본문법을 활용하여, 콤보박스에서 선택한 옵션에 해당하는 내용을 회색 박스인 `<ul class="items">`에 출력하는 기능입니다.
 
-<br/>
-
 ```javascript
 const cmbbox = document.querySelector('#select_value'); // <select>
 
@@ -106,8 +104,6 @@ cmbbox.addEventListener('change', () => {
 
 #### ☑ 주요기능 - 수강신청 인원 조회
 수강신청 내역은 `myclass`컬렉션에 저장되도록 설계를 해두었습니다. 먼저 이 컬렉션의 데이터를 `.where("강의번호", "==", classNum)`와 같이 쿼리를 사용하여 `myclass`컬렉션과 `center_gangnam`컬렉션에 저장된 강의번호가 일치하는 데이터를 가져옵니다. 가져온 데이터를 `applyTotal = querySnapshot.size;`와 같이 size로 개수를 구하고 applyTotal에 데이터를 담아 화면에 출력할 수 있습니다. 모든 회원이 수강신청을 할 때마다 개수는 실시간으로 변동되어 화면에 반영됩니다.
-
-<br/>
 
 ```javascript
 const db = firebase.firestore();
@@ -166,12 +162,11 @@ const storage = firebase.storage();
 수강신청 페이지의 강의명을 클릭하면 수강신청 상세보기 화면으로 이동합니다. `<a>`태그의 링크를 `href="./regiDetail.html?id=${snapshot.docs[i].id}"`와 같이 설정하여 Firebase의 document id를 `query string`으로 활용할 수 있습니다. 따라서 강의명을 클릭하면 해당 강의 document의 id와 일치하는 게시물을 찾아서 상세페이지에 위와 같이 출력할 수 있습니다.
 
 #### ☑ 주요기능 - 수강신청 등록하기
-
-<br/>
+아래 코드와 같이 `jQuery`를 사용하여 id가 'regi_btn'인 신청하기 버튼을 클릭하면, `myclass`컬렉션에 해당 데이터를 추가하는 코드를 수행하여 수강을 등록할 수 있습니다.
 
 ```javascript
 $(document).ready(function () {
-        let queryString = new URLSearchParams(document.location.search);
+        let queryString = new URLSearchParams(document.location.search); // 쿼리스트링 선언
         let id = queryString.get("id"); 
         console.log("사용자가 선택한 item.id : " + id); // 아쉬탕가요가(화요일)_2
 
@@ -228,10 +223,52 @@ $(document).ready(function () {
 
 ### 4) 수강내역 조회 페이지
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
-<img width="50%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670560818/semi_mypage4_qaj6rw.jpg"/>
+<img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670560818/semi_mypage4_qaj6rw.jpg"/>
 
+Firebase의 `onSnapshot()` 메서드를 사용하면 실시간 업데이트를 받을 수 있습니다. `myclass`에 저장된 수강내역을 `where('UID', '==', myuid)`와 같이 로그인한 회원의 uid를 비교하는 쿼리를 활용하여 데이터를 가져오는데, 삭제가 이루어져 DB가 변경되면 새로고침없이, 실시간으로 반영해줍니다.  
 
-<br>
+#### ☑ 주요기능 - 수강신청 삭제하기
+위 이미지와 같이 수강내역의 `<div>` 카드를 클릭하면, `<div class="card-id" style="display : none;">${a.id}</div>`와 같이 class명이 'card-id'인 요소의 내용을 가져올 수 있습니다. 따라서 `clickId` 변수에는 수강신청한 데이터의 고유 uid를 저장할 수 있으며, 이를 활용하여 `myclass`컬렉션에서 `clickId`에 일치하는 데이터를 삭제할 수 있습니다. 
+
+```javascript
+////// 수강내역(카드) 클릭 시 이벤트 - css효과
+   $('.card').click(function(e) {
+
+      // clickId는 전역변수로 빼고 클릭 이벤트에서 초기화
+      // a.id 값을 clickId에 담기
+      clickId = $(this).find('.card-id').text()
+      console.log(clickId);
+
+      $('.card').css("border","") // 나머지는 bordr 스타일X
+      $(this).css("border","3px solid #03a9f4") // 클릭한 카드만 스타일적용
+    })
+
+////// 수강취소 버튼 클릭 시 이벤트 
+// unbind, bind -> 마지막에 클릭한 요소만 실행하기 위해(이거없으면 여러번 수행됨)
+    $('#btn_cancel').unbind("click");
+    $('#btn_cancel').bind("click",function() {
+      // yes, no 확인창
+      if(clickId) {
+        if(confirm("선택한 수강을 취소하시겠습니까?")) {
+            // yes -> DB에서 수강내역 삭제
+            db.collection('myclass').doc(clickId).delete().then(()=>{
+              console.log("Document successfully deleted!");
+            })
+            .catch((err)=>{
+            console.log(err);
+            })
+        } else {
+            // no
+            console.log("cancelled");
+        }
+      }
+      else {
+        alert("취소할 내역을 선택해 주세요.");
+      }
+    })
+```
+
+<br/>
 
 ## 7. 팀원 이름 및 역할
 ◼ 백종국(조장)
