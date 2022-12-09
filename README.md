@@ -103,7 +103,7 @@ cmbbox.addEventListener('change', () => {
 <br/>
 
 #### ☑ 주요기능 - 수강신청 인원 조회
-수강신청 내역은 `myclass`컬렉션에 저장되도록 설계를 해두었습니다. 먼저 이 컬렉션의 데이터를 `.where("강의번호", "==", classNum)`와 같이 쿼리를 사용하여 `myclass`컬렉션과 `center_gangnam`컬렉션에 저장된 강의번호가 일치하는 데이터를 가져옵니다. 가져온 데이터를 `applyTotal = querySnapshot.size;`와 같이 size로 개수를 구하고 applyTotal에 데이터를 담아 화면에 출력할 수 있습니다. 모든 회원이 수강신청을 할 때마다 개수는 실시간으로 변동되어 화면에 반영됩니다.
+수강신청 내역은 `myclass`컬렉션에 저장되도록 설계를 해두었습니다. 먼저 이 컬렉션의 데이터를 `.where("강의번호", "==", classNum)`와 같이 쿼리를 사용하여 `myclass`컬렉션과 `center_gangnam`컬렉션에 저장된 강의번호가 일치하는 데이터를 가져옵니다. 가져온 데이터를 `applyTotal = querySnapshot.size;`와 같이 size로 개수를 구하고 applyTotal에 데이터를 담아 화면에 출력할 수 있습니다. 모든 회원이 수강신청을 할 때마다 개수는 변동되므로, 새로고침 시 화면에 반영된 것을 확인할 수 있습니다.
 
 ```javascript
 const db = firebase.firestore();
