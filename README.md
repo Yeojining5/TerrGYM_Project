@@ -24,9 +24,11 @@
 
 <br>
 
-## 3. Firebase DB 설계
-<img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB1_egdcti.jpg"/>
-<img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB2_x73egk.jpg"/>
+## 3. Firebase - Firestore DB 설계
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB1_egdcti.jpg"/>
+<img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB2_x73egk.jpg"/>
+
+<br>
 
 ## 4. UI 화면
 <br>
@@ -61,10 +63,10 @@
 
 회사소개 페이지는 `HTML`과 `CSS`, `JavaScript`의 기본적인 문법을 활용하여 정적 페이지를 구성하였습니다.
 기본적인 UI 구성은 `Bootstrap`을 활용하였으며, **센터소개**는 **콤보박스 이벤트**를 활용하였습니다.
-**오시는 길**은 `KakaoMap API`를 활용하여 지도에 위치를 표시하였으며, 사이드바의 제목을 누르면 해당 좌표로 이동하는 **스크롤스파이**기능을 활용하였습니다.
+**오시는 길**은 `KakaoMap API`를 활용하여 지도에 위치를 표시하였으며, 사이드바의 제목을 누르면 해당 좌표로 이동하는 **스크롤스파이** 기능을 활용하였습니다.
 
 
-#### (1) JavaScript 콤보박스 이벤트
+#### 주요기능 - JavaScript 콤보박스 이벤트
 Javascript 기본문법을 활용하여, 콤보박스에서 선택한 옵션에 해당하는 내용을 회색 박스인 `<ul class="items">`에 출력하는 기능입니다.
 ```javascript
 const cmbbox = document.querySelector('#select_value'); // <select>
@@ -93,11 +95,67 @@ cmbbox.addEventListener('change', () => {
 
 ### 2) 수강신청 페이지
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage1_jzdokt.jpg"/>
+<img width="50%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670568435/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B6%9C%EB%A0%A5_ihx3qm.jpg"/>
+
+`center_gangnam`컬렉션 DB에 저장되어 있는 강의내역을 전체 레코드 수만큼 for문을 돌려 데이터를 가져오면, 위 이미지와 같이 콘솔창에 출력된 내용을 확인할 수 있습니다(`console.log(snapshot.docs[i].data());` 이를 `${snapshot.docs[i].data().강의명}`와 같이 데이터를 바인딩하고, HTML 테이블의 `class-content` 클래스 명을 가진 `tbody`에 추가하면(append) 출력된 결과를 화면에서 확인할 수 있습니다.<br>
+
+#### 주요기능 - 수강신청 인원 조회
+수강신청 내역은 `myclass`컬렉션에 저장되도록 설계를 해두었습니다. 따라서 이 컬렉션의 데이터를 `.where("강의번호", "==", classNum)`와 같이 쿼리를 사용하여 `myclass`컬렉션과 `center_gangnam`컬렉션에 저장된 강의번호가 일치하는 데이터를 가져와서 `applyTotal = querySnapshot.size;` size로 개수를 구하고 applyTotal에 데이터를 담아 화면에 출력할 수 있습니다. 모든 회원이 수강신청을 할 때마다 개수는 실시간으로 변동되어 화면에 반영됩니다.
+
+```javascript
+const db = firebase.firestore();
+const storage = firebase.storage();
+
+ db.collection("center_gangnam")
+    .orderBy("강의번호", "asc")
+    .get()
+    .then((snapshot) => {
+      console.log(snapshot);
+      total = snapshot.docs.length;
+      console.log("전체 레코드 수 ===> " + total);
+
+      for (let i = 0; i < total; i++) {
+        if (total === i) break;
+        num = i;
+        classNum = snapshot.docs[i].data().강의번호;
+
+        ////////////////////// 수강신청한 컬렉션의 강의번호와 for문으로 출력된 강의번호 쿼리 ////////////////////
+        db.collection("myclass")
+          .where("강의번호", "==", classNum)
+          .get()
+          .then((querySnapshot) => {
+            applyTotal = querySnapshot.size;
+            console.log(snapshot.docs[i].data().강의번호 + "신청인원  : " + applyTotal); /// 신청인원 출력 확인
+            console.log(snapshot.docs[i].data()); // 전체 데이터 출력 확인
+
+            const template = `
+                              <tr>
+                                <td>${snapshot.docs[i].data().강의번호}</td>
+                                <td colspan="3">
+                                  <a href="./regiDetail.html?id=${
+                                    snapshot.docs[i].id
+                                  }" id="classname">
+                                    ${snapshot.docs[i].data().강의명}
+                                  </a>
+                                </td>
+                                <td>${snapshot.docs[i].data().강사명}</td>
+                                <td>${snapshot.docs[i].data().강의시간}</td>
+                                <td>${applyTotal}</td>
+                                <td>${snapshot.docs[i].data().제한인원}</td>
+                              </tr>
+                              `;
+
+            $(".class-content").append(template);
+          });////////////////////////////////////////////////////쿼리끝////////
+      } ////////////////////////////////////// end of for
+    }); /////////////////// end of callback (center_gangnam 수강신청 리스트 가져오기)
+```
 
 <br>
 
 ### 3) 수강신청 상세보기
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage2_enc3pw.jpg"/>
+수강신청 페이지의 강의명을 클릭하면 수강신청 상세보기 화면으로 이동합니다. `<a>`태그의 링크를 `href="./regiDetail.html?id=${snapshot.docs[i].id}"`와 같이 설정하여 Firebase의 document id를 query string으로 활용할 수 있습니다. 따라서 강의명을 클릭하면 해당 강의 document의 id와 일치하는 게시물을 찾아서 상세페이지에 위와 같이 출력할 수 있습니다.
 
 <br>
 
