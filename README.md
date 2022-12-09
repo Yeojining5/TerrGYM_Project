@@ -300,8 +300,8 @@ Firebase의 `onSnapshot()` 메서드를 사용하면 실시간 업데이트를 �
 <br>
 
 ## 8. 사용 기술 및 개발 환경
-- 프론트엔드 : HTML5 / CSS3 / JavaScript / jQuery / BootStrap
-- 데이터베이스 & 서버 : Firebase / Node.js-Express
-- 개발환경 : Visual Studio Code
-- 협업툴 : GitHub / Notion / Slack
-- 오픈 소스 : Kakao Map API / Chart.js
+- Front-end : `HTML5` `CSS3` `JavaScript` `jQuery` `BootStrap`
+- Back-end & DB : `Firebase` `Node.js`
+- 개발환경 : `Visual Studio Code`
+- 협업툴 : `GitHub` `Notion` `Slack`
+- 오픈 소스 : `Kakao Map API` `Chart.js`
