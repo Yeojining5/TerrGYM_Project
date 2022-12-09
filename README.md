@@ -1,4 +1,4 @@
-<br>
+<br/>
 
 # Terr-GYM Project - IntelliGYM
 
@@ -7,7 +7,7 @@
 > 📌 팀  원 : 김지연 신현아 이여진 <br>
 > 📌 기  간 : 2022.07.19 ~ 2022.08.26
 
-<br>
+<br/>
 
 ## 1️. 프로젝트 소개 - IntelliGYM(인텔리짐)
 
@@ -17,29 +17,29 @@
 : 고객을 만족시킬 수 있고, 고객이 필요로 하는 최적화된 운동 서비스를 제공하는 피트니스센터 웹페이지를 기획함
 
 
-<br>
+<br/>
 
 ## 2️. UseCase Diagram
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1669560044/Intell_Usecase_%EC%B5%9C%EC%A2%85_tlxxpv.jpg">
 
-<br>
+<br/>
 
 ## 3. Firebase - Firestore DB 설계
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB1_egdcti.jpg"/>
 <img width="80%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670563438/FirestoreDB2_x73egk.jpg"/>
 
-<br>
+<br/>
 
 ## 4. UI 화면
-<br>
+<br/>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187970608-f4cb90c4-34a6-4117-851e-c88fc6a46f7a.png"/>
-<br>
+<br/>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187971153-277f6e5c-3cd5-45b2-9b58-3c1e82925fb8.png"/>
-<br>
+<br/>
 <img width="60%" src="https://user-images.githubusercontent.com/99080986/187969638-8b47ff38-e248-4c4a-b35c-3e223107516a.png"/>
 
 
-<br>
+<br/>
 
 ## 5. 주요 기능 설명
 
@@ -54,7 +54,7 @@
 | **회원정보** <br> (마이페이지-4) | * 로그인한 회원의 정보 상세 조회 및 수정, 회원 탈퇴 기능 |
 
 
-<br>
+<br/>
 
 ## 6. 내가 구현한 기능과 UI
 
@@ -66,8 +66,11 @@
 **오시는 길**은 `KakaoMap API`를 활용하여 지도에 위치를 표시하였으며, 사이드바의 제목을 누르면 해당 좌표로 이동하는 **스크롤스파이** 기능을 활용하였습니다.
 
 
-#### 주요기능 - JavaScript 콤보박스 이벤트
+#### ☑ 주요기능 - JavaScript 콤보박스 이벤트
 Javascript 기본문법을 활용하여, 콤보박스에서 선택한 옵션에 해당하는 내용을 회색 박스인 `<ul class="items">`에 출력하는 기능입니다.
+
+<br/>
+
 ```javascript
 const cmbbox = document.querySelector('#select_value'); // <select>
 
@@ -91,16 +94,20 @@ cmbbox.addEventListener('change', () => {
     });
 ```
 
-<br>
+<br/>
 
 ### 2) 수강신청 페이지
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage1_jzdokt.jpg"/>
-<img width="50%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670568435/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B6%9C%EB%A0%A5_ihx3qm.jpg"/>
+<img width="70%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670568435/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B6%9C%EB%A0%A5_ihx3qm.jpg"/>
 
-`center_gangnam`컬렉션 DB에 저장되어 있는 강의내역을 전체 레코드 수만큼 for문을 돌려 데이터를 가져오면, 위 이미지와 같이 콘솔창에 출력된 내용을 확인할 수 있습니다(`console.log(snapshot.docs[i].data());` 이를 `${snapshot.docs[i].data().강의명}`와 같이 데이터를 바인딩하고, HTML 테이블의 `class-content` 클래스 명을 가진 `tbody`에 추가하면(append) 출력된 결과를 화면에서 확인할 수 있습니다.<br>
+`center_gangnam`컬렉션 DB에 저장되어 있는 강의내역을 전체 레코드 수만큼 for문을 돌려 데이터를 가져오면, 위 이미지와 같이 콘솔창에 출력된 내용을 확인할 수 있습니다. 이를 `${snapshot.docs[i].data().강의명}`와 같이 데이터를 바인딩하고, HTML 테이블의 `class-content` 클래스 명을 가진 `tbody`에 추가하면(append) 출력된 결과를 화면에서 확인할 수 있습니다.
 
-#### 주요기능 - 수강신청 인원 조회
-수강신청 내역은 `myclass`컬렉션에 저장되도록 설계를 해두었습니다. 따라서 이 컬렉션의 데이터를 `.where("강의번호", "==", classNum)`와 같이 쿼리를 사용하여 `myclass`컬렉션과 `center_gangnam`컬렉션에 저장된 강의번호가 일치하는 데이터를 가져와서 `applyTotal = querySnapshot.size;` size로 개수를 구하고 applyTotal에 데이터를 담아 화면에 출력할 수 있습니다. 모든 회원이 수강신청을 할 때마다 개수는 실시간으로 변동되어 화면에 반영됩니다.
+<br/>
+
+#### ☑ 주요기능 - 수강신청 인원 조회
+수강신청 내역은 `myclass`컬렉션에 저장되도록 설계를 해두었습니다. 먼저 이 컬렉션의 데이터를 `.where("강의번호", "==", classNum)`와 같이 쿼리를 사용하여 `myclass`컬렉션과 `center_gangnam`컬렉션에 저장된 강의번호가 일치하는 데이터를 가져옵니다. 가져온 데이터를 `applyTotal = querySnapshot.size;`와 같이 size로 개수를 구하고 applyTotal에 데이터를 담아 화면에 출력할 수 있습니다. 모든 회원이 수강신청을 할 때마다 개수는 실시간으로 변동되어 화면에 반영됩니다.
+
+<br/>
 
 ```javascript
 const db = firebase.firestore();
@@ -151,13 +158,73 @@ const storage = firebase.storage();
     }); /////////////////// end of callback (center_gangnam 수강신청 리스트 가져오기)
 ```
 
-<br>
+<br/>
 
 ### 3) 수강신청 상세보기
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage2_enc3pw.jpg"/>
-수강신청 페이지의 강의명을 클릭하면 수강신청 상세보기 화면으로 이동합니다. `<a>`태그의 링크를 `href="./regiDetail.html?id=${snapshot.docs[i].id}"`와 같이 설정하여 Firebase의 document id를 query string으로 활용할 수 있습니다. 따라서 강의명을 클릭하면 해당 강의 document의 id와 일치하는 게시물을 찾아서 상세페이지에 위와 같이 출력할 수 있습니다.
 
-<br>
+수강신청 페이지의 강의명을 클릭하면 수강신청 상세보기 화면으로 이동합니다. `<a>`태그의 링크를 `href="./regiDetail.html?id=${snapshot.docs[i].id}"`와 같이 설정하여 Firebase의 document id를 `query string`으로 활용할 수 있습니다. 따라서 강의명을 클릭하면 해당 강의 document의 id와 일치하는 게시물을 찾아서 상세페이지에 위와 같이 출력할 수 있습니다.
+
+#### ☑ 주요기능 - 수강신청 등록하기
+
+<br/>
+
+```javascript
+$(document).ready(function () {
+        let queryString = new URLSearchParams(document.location.search);
+        let id = queryString.get("id"); 
+        console.log("사용자가 선택한 item.id : " + id); // 아쉬탕가요가(화요일)_2
+
+          db.collection("center_gangnam")
+            .doc(id)
+            .get()
+            .then((result) => {
+              console.log(result.data());
+              classimage = result.data().이미지;
+              classname = result.data().강의명;
+              classnum = result.data().강의번호;
+              teacher = result.data().강사명;
+              classtime = result.data().강의시간;
+              classtype = result.data().강의분류;
+              $(".img-thumbnail").attr("src", classimage); // img태그 src 속성에 'classimage'값 추가
+              $(".classname").attr("value", classname); // input태그 value 속성에 'classname'값 추가
+              $(".classnum").attr("value", classnum);
+              $(".teacher").attr("value", teacher);
+              $(".classtime").attr("value", classtime);
+            });
+
+        // 신청하기 버튼 클릭 시 이벤트
+        $("#regi_btn").click(function (e) {
+          e.preventDefault() // 필수코드 - form태그 새로고침 방지
+          let data = {
+            이름: c_name,
+            성별: gender,
+            나이: age,
+            강의명: classname,
+            강의분류: classtype,
+            강의번호: classnum,
+            강사명: teacher,
+            강의시간: classtime,
+            신청일자: setClock(),
+            UID: myuid,
+          };
+
+          // 위에 선언한 data를 myclass 컬렉션에 추가
+          db.collection("myclass")
+            .add(data)
+            .then((result) => {
+              console.log(result);
+              alert("수강신청이 완료되었습니다! 수강내역에서 확인해 주세요.");
+              window.location.href = "./register.html"; // 수강신청 페이지로 이동
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      });
+```
+
+<br/>
 
 ### 4) 수강내역 조회 페이지
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
