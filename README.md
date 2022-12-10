@@ -57,6 +57,21 @@
 <br/>
 
 ## 6. 내가 구현한 기능과 UI
+### ⚙ 활용해본 대표 기술
+- `HTML`과 `CSS`, `Bootstrap`을 활용하여 UI 화면 구현
+- `JavaScript`를 활용한 Select 콤보박스 이벤트, 스크롤스파이 기능 등 구현
+- `JQuery`를 활용한  버튼 클릭 이벤트, 요소-속성 변경 이벤트 구현
+- NoSQL 기반 `Firebase`를 활용한 데이터 읽기, 저장 등으로 편리한 백엔드 클라우드 환경 구현
+
+<br/>
+
+### ⚙ 구현 기능 개요
+- 회사소개(About)페이지 UI 구현
+- 수강신청 페이지 UI 및 기능 구현
+- 수강신청 내역 조회 및 수강인원 확인
+- 수강신청 상세보기, 등록, 삭제 구현
+
+<br/>
 
 ### 1) 회사소개(About) 페이지
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501840/semi_about_yyafqn.gif"/>
