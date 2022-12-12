@@ -240,7 +240,7 @@ $(document).ready(function () {
 <img src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670501839/semi_mypage3_g6j59d.jpg"/>
 <img width="60%" src="https://res.cloudinary.com/drxxdsv01/image/upload/v1670560818/semi_mypage4_qaj6rw.jpg"/>
 
-Firebase의 `onSnapshot()` 메서드를 사용하면 실시간 업데이트를 받을 수 있습니다. `myclass`에 저장된 수강내역을 `where('UID', '==', myuid)`와 같이 로그인한 회원의 uid와 일치하는 쿼리를  데이터를 가져오는데, 삭제가 이루어져 DB가 변경되면 새로고침없이, 실시간으로 반영해줍니다.  
+Firebase의 `onSnapshot()` 메서드를 사용하면 실시간 업데이트를 받을 수 있습니다. `myclass`에 저장된 수강내역을 `where('UID', '==', myuid)`와 같이 로그인한 회원의 uid와 일치하는 쿼리를 통해 데이터를 가져오는데, 삭제가 이루어져 DB가 변경되면 새로고침없이, 실시간으로 반영해줍니다.  
 
 #### ☑ 주요기능 - 수강신청 삭제하기
 위 이미지와 같이 수강내역의 `<div>` 카드를 클릭하면, `<div class="card-id" style="display : none;">${a.id}</div>`와 같이 class명이 'card-id'인 요소의 내용을 가져올 수 있습니다. 따라서 `clickId` 변수에는 수강신청한 데이터의 고유 uid를 저장할 수 있으며, 이를 활용하여 `myclass`컬렉션에서 `clickId`에 일치하는 데이터를 삭제할 수 있습니다. 
